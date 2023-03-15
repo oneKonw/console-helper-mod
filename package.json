@@ -86,7 +86,7 @@
         "args": {
           "snippet": "console.log('$1', $1)$0"
         },
-        "key": "ctrl+shift+l",
+        "key": "alt+shift+y",
         "mac": "cmd+y"
       }
     ],

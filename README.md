@@ -12,7 +12,7 @@
 快捷方式：
 
 - macOS: `cmd` + `shift` + `l`
-- Windows: `ctrl` + `l`
+- Windows: `alt` + `shift` + `l`
 
 ![select-insert](https://at529.gitee.io/public-static/static/image/2021-01-27-select-insert.gif)
 
@@ -65,7 +65,7 @@
 快捷方式：
 
 - macOS: `cmd` + `y`
-- Windows: `alt` + `shift` + `l`
+- Windows: `alt` + `shift` + `y`
 
 ![insert-simple](https://at529.gitee.io/public-static/static/image/20220217-insert-simple.gif)
 
