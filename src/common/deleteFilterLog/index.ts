@@ -2,7 +2,7 @@
  * @Author: hyt
  * @Date: 2023-03-14 14:32:14
  * @LastEditors: hyt
- * @LastEditTime: 2023-03-14 16:58:11
+ * @LastEditTime: 2023-03-15 11:31:21
  * @Description: 文件头的一些描述
  */
 import { window, Range, commands } from 'vscode'
@@ -34,12 +34,13 @@ export const deleteFilterLog = context => {
 const getAllLogStatements = (document, documentText) => {
   // 默认情况下只删除没有被注释的log，清除全部的时候再把所有的log删除掉
   const prefixLogo = getSettingValue('Prefix Logo')
+  const defaultLogg = '🚀';
   const filterRegex = new RegExp(`\\b${prefixLogo}\\b`)
   const logStatements = []
   const logRegex = /console.(log|debug|info|warn|error|assert|dir|dirxml|trace|group|groupEnd|time|timeEnd|profile|profileEnd|count)\(([\s\S]*?)\);?/g
   let match
   while ((match = logRegex.exec(documentText))) {
-    if (filterRegex.test(match[0])) {          
+    if (filterRegex.test(match[0]) || match[0].indexOf(defaultLogg) != -1) {          
       const matchRange = new Range(
         document.positionAt(match.index),
         document.positionAt(match.index + match[0].length)
