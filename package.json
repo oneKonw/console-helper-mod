@@ -1,0 +1,232 @@
+{
+  "name": "console-helper",
+  "displayName": "console helper",
+  "description": "console helper — 在代码中快速输出 console.log 的插件。",
+  "version": "2.5.2",
+  "publisher": "AT-9420",
+  "repository": "https://github.com/shangZhengXie/console-helper",
+  "icon": "static/console-helper.png",
+  "engines": {
+    "vscode": "^1.2.0"
+  },
+  "keywords": [
+    "console",
+    "console utils",
+    "console helper",
+    "console-helper",
+    "log-helper",
+    "console.log",
+    "console.log javascript",
+    "console log javascript",
+    "log",
+    "log helper",
+    "log utils",
+    "javascript console log",
+    "javascript console log utils",
+    "javascript console",
+    "javascript log",
+    "js log",
+    "js-log",
+    "c-log",
+    "日志小助手"
+  ],
+  "categories": [
+    "Other",
+    "Snippets"
+  ],
+  "activationEvents": [
+    "onCommand:consoleLog.insertLogStatement",
+    "onCommand:consoleLog.deleteAllLogStatements",
+    "onCommand:consoleLog.deleteFilterLogStatements"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "consoleLog.insertLogStatement",
+        "title": "打印变量"
+      },
+      {
+        "command": "consoleLog.deleteAllLogStatements",
+        "title": "删除当前文件中全部的 console.log 语句"
+      },
+      {
+        "command": "consoleLog.deleteFilterLogStatements",
+        "title": "删除当前文件中未注释的特有 console.log 语句"
+      },
+      {
+        "command": "editor.action.insertSnippet",
+        "title": "快捷输出 console.log 语句"
+      },
+      {
+        "command": "consoleLog.insertVariable",
+        "title": "打印光标所在字符"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "consoleLog.insertLogStatement",
+        "key": "alt+shift+l",
+        "mac": "cmd+shift+l",
+        "when": "editorTextFocus"
+      },
+      {
+        "command": "consoleLog.deleteAllLogStatements",
+        "key": "alt+shift+a",
+        "mac": "cmd+shift+a"
+      },
+      {
+        "command": "consoleLog.deleteFilterLogStatements",
+        "key": "alt+shift+d",
+        "mac": "cmd+shift+d"
+      },
+      {
+        "command": "editor.action.insertSnippet",
+        "when": "editorTextFocus && !editorHasSelection",
+        "args": {
+          "snippet": "console.log('$1', $1)$0"
+        },
+        "key": "ctrl+shift+l",
+        "mac": "cmd+y"
+      }
+    ],
+    "snippets": [
+      {
+        "language": "javascript",
+        "path": "./snippets.json"
+      },
+      {
+        "language": "vue",
+        "path": "./snippets.json"
+      },
+      {
+        "language": "javascriptreact",
+        "path": "./snippets.json"
+      },
+      {
+        "language": "typescript",
+        "path": "./snippets.json"
+      },
+      {
+        "language": "typescriptreact",
+        "path": "./snippets.json"
+      }
+    ],
+    "configuration": {
+      "type": "object",
+      "title": "日志小助手",
+      "properties": {
+        "consoleLog.Select FileName": {
+          "type": "string",
+          "default": "不打印",
+          "description": "是否打印文件名",
+          "enum": [
+            "不打印",
+            "打印文件名",
+            "打印文件名+文件后缀名",
+            "打印文件名+后缀名+上级目录",
+            "打印完整路径"
+          ],
+          "enumDescriptions": [
+            "示例：console.log(AT)",
+            "示例：console.log('「console」', AT)",
+            "示例：console.log('「console.js」', AT)",
+            "示例：console.log('「Desktop/console.js」', AT)",
+            "示例：console.log('「/Users/at/Desktop/console.js」', AT)"
+          ]
+        },
+        "consoleLog.Select Quotes": {
+          "type": "string",
+          "default": "single",
+          "description": "请选择单引号或双引号",
+          "enum": [
+            "single",
+            "double"
+          ],
+          "enumDescriptions": [
+            "单引号",
+            "双引号"
+          ]
+        },
+        "consoleLog.Number Argument": {
+          "type": "string",
+          "default": "console.log 接收 3 个参数",
+          "description": "请选择 console.log 的参数数量",
+          "enum": [
+            "console.log 接收 1 个参数",
+            "console.log 接收 2 个参数",
+            "console.log 接收 3 个参数"
+          ],
+          "enumDescriptions": [
+            "示例：console.log(AT)",
+            "示例：console.log('AT', AT)",
+            "示例：console.log('AT', 'color: #bf2c9f; background: pink; font-size: 13px;', AT)"
+          ]
+        },
+        "consoleLog.Prefix Logo": {
+          "type": "string",
+          "default": "[ # ]",
+          "description": "前缀标识 [ 默认值 # ]\n「 以变量 AT 示例，自定义前缀标识仅对 console.log 接收 2/3 个参数有效，console.log() 的第 2 个参数的样式是根据'Color/Color Bg/ Font Size ...'填充 」\n1.若填写 #\n—— console.log 接收 2 个参数: 输出 console.log('AT', AT)\n—— console.log 接收 3 个参数: 输出 console.log('%c AT', 'color: #bf2c9f; background: pink; font-size: 13px;', AT)\n2.若填写 AT-[ # ]\n —— console.log 接收 2 个参数: 输出 console.log('AT-[ AT ]', AT)\n —— console.log 接收 3 个参数: 输出 console.log('%cAT-[ AT ]', 'color: #bf2c9f; background: pink; font-size: 13px;', AT)\n"
+        },
+        "consoleLog.Color": {
+          "type": "string",
+          "default": "#bf2c9f",
+          "description": "字体颜色 [ HEX or RGBA ], 建议 #bf2c9f"
+        },
+        "consoleLog.Color Bg": {
+          "type": "string",
+          "default": "pink",
+          "description": "背景颜色 [ HEX or RGBA ], 建议 pink"
+        },
+        "consoleLog.Font Size": {
+          "type": "string",
+          "default": "13",
+          "description": "字号大小[ 单位 px ], 建议 13"
+        },
+        "consoleLog.Show Semi": {
+          "type": "boolean",
+          "default": false,
+          "description": "末尾是否加分号"
+        },
+        "consoleLog.Show LineNumber": {
+          "type": "boolean",
+          "default": true,
+          "description": "是否显示行号"
+        },
+        "consoleLog.Random Color": {
+          "type": "boolean",
+          "default": false,
+          "description": "是否随机颜色"
+        },
+        "consoleLog.Defatule Type": {
+          "type": "string",
+          "default": "log",
+          "description": "console的类型，支持 log,warn,error"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "pretest": "npm run lint",
+    "test": "node ./test/runTest.js",
+    "watch": "tsc -watch -p ./",
+    "build": "vsce package"
+  },
+  "devDependencies": {
+    "@types/glob": "^7.1.3",
+    "@types/mocha": "^8.0.0",
+    "@types/node": "^12.11.7",
+    "@types/vscode": "^1.2.0",
+    "eslint": "^7.9.0",
+    "glob": "^7.1.6",
+    "mocha": "^8.1.3",
+    "typescript": "^4.0.2",
+    "vsce": "^2.6.7",
+    "vscode-test": "^1.4.0"
+  },
+  "dependencies": {
+    "axios": "^0.21.1",
+    "compare-versions": "^3.6.0"
+  }
+}
