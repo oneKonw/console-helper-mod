@@ -1,10 +1,10 @@
 {
-  "name": "console-helper",
-  "displayName": "console helper",
-  "description": "console helper — 在代码中快速输出 console.log 的插件。",
+  "name": "console-helper-mod",
+  "displayName": "console helper mod",
+  "description": "console helper mod",
   "version": "2.5.2",
-  "publisher": "AT-9420",
-  "repository": "https://github.com/shangZhengXie/console-helper",
+  "publisher": "oneKonw",
+  "repository": "https://github.com/oneKonw/console-helper-mod",
   "icon": "static/console-helper.png",
   "engines": {
     "vscode": "^1.2.0"
